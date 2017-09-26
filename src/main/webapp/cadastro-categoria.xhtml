@@ -13,25 +13,24 @@
                     <h:form>
                         <label>
                             Categoria: 
-                            <h:inputText value="#{categoriaController.categoria}" autocomplete="on" required="true"></h:inputText>
+                            <h:inputText value="#{categoriaController.nomeCategoria}" autocomplete="on" required="true"/>
                         </label>
-                        <h:commandButton value="Salvar" action="#{categoriaController.add()}" />
+                        <h:commandButton value="Salvar" action="#{categoriaController.adicionarCategoria()}" />
                     </h:form>
                 </section>
-                
+                <br/>
                 <section>
                     <h1>Categorias Existentes</h1>
                     <h:dataTable id="table" value="#{categoriaController.list()}" var="categoria">
-<!--                        <h:column>
+                        <h:column>
                             <f:facet name="header">Codigo</f:facet>
                             #{categoria.codigo}
-                        </h:column>-->
+                        </h:column>
                         <h:column>
                             <f:facet name="header">Categoria</f:facet>
-                            #{categoria}
+                            #{categoria.nome}
                         </h:column>
                     </h:dataTable>
-
                 </section>
             </ui:define>
         </ui:composition>

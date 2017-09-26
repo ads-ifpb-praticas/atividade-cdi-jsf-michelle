@@ -6,13 +6,11 @@
 package br.edu.ifpb.atividade.cdi.jsf.michelle.controller;
 
 import br.edu.ifpb.atividade.cdi.jsf.michelle.model.Categoria;
-import java.io.Serializable;
-import java.util.ArrayList;
+import br.edu.ifpb.atividade.cdi.jsf.michelle.service.CategoriaService;
 import java.util.Collections;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 /**
  *
@@ -20,38 +18,30 @@ import javax.inject.Named;
  */
 
 @Named
-@ViewScoped
-public class CategoriaController implements Serializable {
+@RequestScoped
+public class CategoriaController {
     
-    private List<String> categorias = new ArrayList<>();
-    private String categoria = "";
-
-    public List<String> getCategorias() {
-        return categorias;
-    }
-
-    public void setCategorias(List<String> categorias) {
-        this.categorias = categorias;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
+    @Inject
+    private CategoriaService service;
     
-    
-    public String add() {
-        categorias.add(categoria);
-        categoria = "";
+    private String nomeCategoria = "";
+
+    public String getNomeCategoria() {
+        return nomeCategoria;
+    }
+
+    public void setNomeCategoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
+    }
+
+    public String adicionarCategoria() {
+        service.add(new Categoria(nomeCategoria));
+        nomeCategoria = "";
         return null;
     }
     
-    public List<String> list() {
-        return Collections.unmodifiableList(categorias);
+    public List<Categoria> list() {
+        return Collections.unmodifiableList(service.getAll());
     }
     
 }
