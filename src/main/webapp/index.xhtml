@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Sistema de Cadastro de Produtos</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    </h:head>
+    <h:body>
+        <header>
+            <nav id="menu-bar">
+                <ui:insert name="menu">
+                    <ul>
+                        <a href="cadastro-categoria.xhtml"><li>Cadastrar Categoria</li></a>
+                        <a href="cadastro-produto.xhtml"><li>Cadastrar Produto</li></a>
+                        <a href="lista-produtos.xhtml"><li>Listar Produtos</li></a>
+                    </ul>
+                </ui:insert>
+            </nav> 
+        </header>      
+        
+        <section id="content">
+            <ui:insert name="content">
+                <h1><strong>Seja bem-vindo ao aplicativo!</strong></h1>
+            </ui:insert>
+        </section>
+        
+        <footer id="bottom-bar">
+            <ui:insert name="content-bar">
+                <p>&copy; Todos os direitos reservados, 2016</p>
+            </ui:insert>
+        </footer>
+    </h:body>
+</html>
+
