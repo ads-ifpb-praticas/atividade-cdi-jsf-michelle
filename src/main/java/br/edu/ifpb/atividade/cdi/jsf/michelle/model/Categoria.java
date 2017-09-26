@@ -33,6 +33,10 @@ public class Categoria implements Serializable {
     public Categoria() {
     }
 
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
+
     public int getCodigo() {
         return codigo;
     }

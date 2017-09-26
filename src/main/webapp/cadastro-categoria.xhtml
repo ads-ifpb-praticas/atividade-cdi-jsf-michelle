@@ -3,12 +3,37 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
         <ui:composition template="index.xhtml">
-            <ui:insert name="content">
+            <ui:define name="content">
+                <section>
+                    <h1>Adicionar Categoria</h1>
+                    <h:form>
+                        <label>
+                            Categoria: 
+                            <h:inputText value="#{categoriaController.categoria}" autocomplete="on" required="true"></h:inputText>
+                        </label>
+                        <h:commandButton value="Salvar" action="#{categoriaController.add()}" />
+                    </h:form>
+                </section>
                 
-            </ui:insert>
+                <section>
+                    <h1>Categorias Existentes</h1>
+                    <h:dataTable id="table" value="#{categoriaController.list()}" var="categoria">
+<!--                        <h:column>
+                            <f:facet name="header">Codigo</f:facet>
+                            #{categoria.codigo}
+                        </h:column>-->
+                        <h:column>
+                            <f:facet name="header">Categoria</f:facet>
+                            #{categoria}
+                        </h:column>
+                    </h:dataTable>
+
+                </section>
+            </ui:define>
         </ui:composition>
     </h:body>
 </html>

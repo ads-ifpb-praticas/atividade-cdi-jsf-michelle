@@ -8,3 +8,56 @@ and open the template in the editor.
     Author     : miolivc
 */
 
+* {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+}
+
+#menu-bar, #bottom-bar {
+    background-color: brown;
+    color: white;
+}
+
+#bottom-bar {
+    bottom: 0;
+    padding: 1%;
+}
+
+#menu-bar li {
+    display: inline-block;
+    padding: 1%;
+    list-style: none;
+}
+
+#menu-bar a {
+    text-decoration: none;
+    color:white;
+}
+
+#menu-bar li:hover {
+    background-color: white;
+    color: brown;
+    transition-duration: 0.5s;
+}
+
+#content {
+    min-height: 80%;
+}
+
+#content h1 {
+    margin: 2%;
+}
+
+#table {
+    min-width: 20%;
+}
+
+#table tr {
+    background-color: tan;
+    min-height: 2%;
+}
