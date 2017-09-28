@@ -6,7 +6,12 @@
 package br.edu.ifpb.atividade.cdi.jsf.michelle.controller;
 
 import br.edu.ifpb.atividade.cdi.jsf.michelle.model.Categoria;
+import br.edu.ifpb.atividade.cdi.jsf.michelle.persistence.Repository;
+import br.edu.ifpb.atividade.cdi.jsf.michelle.qualifiers.CategoriaPersistence;
 import br.edu.ifpb.atividade.cdi.jsf.michelle.service.CategoriaService;
+import br.edu.ifpb.atividade.cdi.jsf.michelle.service.CategoriaServiceImpl;
+
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -19,12 +24,22 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class CategoriaController {
-    
+public class CategoriaController implements Serializable {
+
     @Inject
     private CategoriaService service;
-    
-    private String nomeCategoria = "";
+    private String nomeCategoria;
+
+    public CategoriaController() {
+    }
+
+    public CategoriaService getService() {
+        return service;
+    }
+
+    public void setService(CategoriaService service) {
+        this.service = service;
+    }
 
     public String getNomeCategoria() {
         return nomeCategoria;
@@ -43,5 +58,5 @@ public class CategoriaController {
     public List<Categoria> list() {
         return Collections.unmodifiableList(service.getAll());
     }
-    
+
 }

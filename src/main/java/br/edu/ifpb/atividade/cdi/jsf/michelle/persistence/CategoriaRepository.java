@@ -22,9 +22,6 @@ public class CategoriaRepository implements Repository<Categoria> {
     @Inject
     private EntityManager manager;
 
-    public CategoriaRepository() {
-    }
-    
     @Override
     public void save(Categoria categoria) {
         manager.getTransaction().begin();
@@ -36,7 +33,5 @@ public class CategoriaRepository implements Repository<Categoria> {
     public List<Categoria> list() {
         return manager.createNamedQuery("all", Categoria.class).getResultList();
     }
-    
-    
-    
+
 }

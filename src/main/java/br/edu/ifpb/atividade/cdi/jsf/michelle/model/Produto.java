@@ -6,12 +6,15 @@
 package br.edu.ifpb.atividade.cdi.jsf.michelle.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 /**
@@ -21,6 +24,11 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator(name = "produto_seq", sequenceName = "produto_seq")
+@NamedQueries({
+    @NamedQuery(name = "all", query = "SELECT p FROM Produto p"),
+    @NamedQuery(name = "id", query = "SELECT p FROM Produto p WHERE id = :id")
+})
+
 public class Produto implements Serializable {
     
     @Id
@@ -42,8 +50,8 @@ public class Produto implements Serializable {
     @Column(length = 30, nullable = false)
     private String marca;
     
-    @ManyToMany
-    private Categoria categoria;
+    @OneToMany
+    private List<Categoria> categoria;
 
     public int getId() {
         return id;
@@ -92,12 +100,12 @@ public class Produto implements Serializable {
     public void setMarca(String marca) {
         this.marca = marca;
     }
-
-    public Categoria getCategoria() {
+    
+    public List<Categoria> getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(List<Categoria> categoria) {
         this.categoria = categoria;
     }
     
