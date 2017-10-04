@@ -19,7 +19,8 @@ public class EntityManagerProducer {
     
     @Produces
     public static EntityManager getEntityManager() {
-        manager = Persistence.createEntityManagerFactory("atividade-cdi-jsf-michelle")
+        manager = Persistence
+                .createEntityManagerFactory("atividade-cdi-jsf-michelle")
                 .createEntityManager();
         return manager;
     }
