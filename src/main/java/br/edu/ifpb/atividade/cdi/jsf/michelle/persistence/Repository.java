@@ -10,6 +10,7 @@ import java.util.List;
 /**
  *
  * @author miolivc
+ * @param <T>
  */
 public interface Repository<T> {
     

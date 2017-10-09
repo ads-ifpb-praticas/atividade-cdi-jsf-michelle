@@ -55,4 +55,8 @@ public class CategoriaController implements Serializable {
         return Collections.unmodifiableList(service.getAll());
     }
 
+    public Categoria getCategoriaByName(String name) {
+        return service.get(name);
+    }
+    
 }

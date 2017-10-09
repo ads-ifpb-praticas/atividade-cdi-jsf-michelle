@@ -54,10 +54,36 @@ html, body {
 }
 
 #table {
-    min-width: 20%;
 }
 
 #table tr {
-    background-color: tan;
+    background-color: wheat;
     min-height: 2%;
+}
+
+#table tr td {
+    min-width: 150px;
+}
+
+#table tr th {
+    padding: 5px;
+    background-color: brown;
+    color: white;
+}
+
+#form {
+    width: 40%;
+}
+
+#form input {
+    text-align: justify;
+    width: 250px;
+    height: 2%;
+    padding: 1%;
+    margin: 0.5%;
+}
+
+#form input[type='submit'], #form a {
+    text-align: center;
+    width: 170px;
 }

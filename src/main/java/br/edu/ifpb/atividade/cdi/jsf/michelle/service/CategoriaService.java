@@ -35,6 +35,7 @@ public class CategoriaService implements Service<Categoria> {
         return repository.list();
     }
 
+    @Override
     public Categoria get(String name) {
         return repository.get(name);
     }

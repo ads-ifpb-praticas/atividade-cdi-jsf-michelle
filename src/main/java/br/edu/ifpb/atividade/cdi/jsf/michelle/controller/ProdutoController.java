@@ -1,6 +1,7 @@
 
 package br.edu.ifpb.atividade.cdi.jsf.michelle.controller;
 
+import br.edu.ifpb.atividade.cdi.jsf.michelle.model.Categoria;
 import br.edu.ifpb.atividade.cdi.jsf.michelle.model.Produto;
 import br.edu.ifpb.atividade.cdi.jsf.michelle.service.GerenciadorFotos;
 import br.edu.ifpb.atividade.cdi.jsf.michelle.service.Service;
@@ -26,9 +27,15 @@ public class ProdutoController {
     @Inject
     private Service<Produto> service;
     @Inject
+    private Service<Categoria> categoriaService;
+    @Inject
     private Produto produto;
 
     public String adicionarProduto() throws IOException {
+        Categoria categoria = categoriaService.get(produto.getCategoria().getNome());
+        if (categoria == null) {
+            categoriaService.add(produto.getCategoria());
+        }
         produto.setFoto(GerenciadorFotos.encodeFoto(foto));
         service.add(produto);
         produto = new Produto();
