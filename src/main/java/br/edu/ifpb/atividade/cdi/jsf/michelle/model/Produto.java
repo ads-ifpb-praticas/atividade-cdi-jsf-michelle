@@ -6,13 +6,13 @@
 package br.edu.ifpb.atividade.cdi.jsf.michelle.model;
 
 import java.io.Serializable;
-import java.util.List;
+import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 /**
@@ -29,23 +29,24 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produto_seq")
     private int id;
     
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, unique = true)
     private String nome;
     
     @Column(columnDefinition = "VARCHAR")
-    private byte[] foto;
+    private String foto;
     
     @Column(length = 150, nullable = false)
     private String descricao;
     
     @Column(columnDefinition = "NUMERIC(7,2) DEFAULT 0", nullable = false)
-    private double preço;
+    private double preco;
     
     @Column(length = 30, nullable = false)
     private String marca;
     
-    @OneToMany
-    private List<Categoria> categoria;
+    @OneToOne
+    @Inject
+    private Categoria categoria;
 
     public int getId() {
         return id;
@@ -63,11 +64,11 @@ public class Produto implements Serializable {
         this.nome = nome;
     }
 
-    public byte[] getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
@@ -79,12 +80,12 @@ public class Produto implements Serializable {
         this.descricao = descricao;
     }
 
-    public double getPreço() {
-        return preço;
+    public double getPreco() {
+        return preco;
     }
 
-    public void setPreço(double preço) {
-        this.preço = preço;
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
     public String getMarca() {
@@ -95,11 +96,11 @@ public class Produto implements Serializable {
         this.marca = marca;
     }
     
-    public List<Categoria> getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(List<Categoria> categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
     

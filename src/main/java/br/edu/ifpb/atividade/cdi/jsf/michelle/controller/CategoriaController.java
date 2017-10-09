@@ -6,11 +6,7 @@
 package br.edu.ifpb.atividade.cdi.jsf.michelle.controller;
 
 import br.edu.ifpb.atividade.cdi.jsf.michelle.model.Categoria;
-import br.edu.ifpb.atividade.cdi.jsf.michelle.persistence.Repository;
-import br.edu.ifpb.atividade.cdi.jsf.michelle.qualifiers.CategoriaPersistence;
-import br.edu.ifpb.atividade.cdi.jsf.michelle.service.CategoriaService;
-import br.edu.ifpb.atividade.cdi.jsf.michelle.service.CategoriaServiceImpl;
-
+import br.edu.ifpb.atividade.cdi.jsf.michelle.service.Service;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
@@ -27,17 +23,17 @@ import javax.inject.Named;
 public class CategoriaController implements Serializable {
 
     @Inject
-    private CategoriaService service;
+    private Service<Categoria> service;
     private String nomeCategoria;
 
     public CategoriaController() {
     }
 
-    public CategoriaService getService() {
+    public Service getService() {
         return service;
     }
 
-    public void setService(CategoriaService service) {
+    public void setService(Service service) {
         this.service = service;
     }
 

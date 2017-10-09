@@ -6,17 +6,37 @@
 package br.edu.ifpb.atividade.cdi.jsf.michelle.service;
 
 import br.edu.ifpb.atividade.cdi.jsf.michelle.model.Categoria;
-import java.io.Serializable;
+import br.edu.ifpb.atividade.cdi.jsf.michelle.persistence.Repository;
+import br.edu.ifpb.atividade.cdi.jsf.michelle.qualifiers.CategoriaPersistence;
 import java.util.List;
+import javax.inject.Inject;
 
 /**
  *
  * @author miolivc
  */
-public interface CategoriaService extends Serializable {
 
-    void add(Categoria categoria);
+public class CategoriaService implements Service<Categoria> {
 
-    List<Categoria> getAll();
+    @Inject
+    @CategoriaPersistence
+    private Repository<Categoria> repository;
+
+    public CategoriaService() {
+    }
+
+    @Override
+    public void add(Categoria categoria) {
+        repository.save(categoria);
+    }
     
+    @Override
+    public List<Categoria> getAll() {
+        return repository.list();
+    }
+
+    public Categoria get(String name) {
+        return repository.get(name);
+    }
+
 }

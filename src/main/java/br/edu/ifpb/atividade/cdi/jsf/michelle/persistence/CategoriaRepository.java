@@ -31,8 +31,15 @@ public class CategoriaRepository implements Repository<Categoria> {
     
     @Override
     public List<Categoria> list() {
-        return manager.createNamedQuery("todos", Categoria.class).getResultList();
-//        return manager.createQuery("SELECT c FROM Categoria c", Categoria.class).getResultList();
+        return manager.createQuery("SELECT c FROM Categoria c", Categoria.class).getResultList();
+    }
+
+    @Override
+    public Categoria get(String key) {
+        return manager
+        .createQuery("SELECT c FROM Categoria c WHERE UPPER(c.nome) = UPPER(:nome)", Categoria.class)
+        .setParameter("nome", key)
+        .getSingleResult();
     }
 
 }
